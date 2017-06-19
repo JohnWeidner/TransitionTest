@@ -1,13 +1,15 @@
 package com.motb.transitiontest;
 
-import android.app.ActivityOptions;
-import android.content.Intent;
+
+import android.app.Fragment;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
+import android.transition.Scene;
+import android.transition.Transition;
+import android.transition.TransitionInflater;
+import android.transition.TransitionManager;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.Window;
 
 public class MainActivity extends AppCompatActivity {
@@ -21,21 +23,40 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
     }
 
+    boolean to;
 
     public void onClick( View v ) {
-        if ( mDetailCardFragment == null ) {
-            mDetailCardFragment = Fragment1.newInstance();
-            getSupportFragmentManager().beginTransaction()
-                    .setCustomAnimations( R.anim.anim1, R.anim.anim2 )
-                    .replace(R.id.fragmentContainer, mDetailCardFragment)
-                    .setTransition(FragmentTransaction.TRANSIT_NONE)
-                    .commit();
+        Scene scene;
+        ViewGroup mSceneRoot = (ViewGroup) findViewById(R.id.fragmentContainer);
+        if (to) {
+            Transition mFadeTransition =
+                    TransitionInflater.from(this).
+                            inflateTransition(R.transition.transition1);
+            scene = Scene.getSceneForLayout(mSceneRoot, R.layout.fragment1, this);
+
+            TransitionManager.go(scene, mFadeTransition);
         }
         else {
-            getSupportFragmentManager().beginTransaction().remove( mDetailCardFragment )
-                    .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_CLOSE)
-                    .commit();
-            mDetailCardFragment = null ;
+            Transition mFadeTransition =
+                    TransitionInflater.from(this).
+                            inflateTransition(R.transition.transition1);
+            scene = Scene.getSceneForLayout(mSceneRoot, R.layout.activity2, this);
+            TransitionManager.go(scene, mFadeTransition);
         }
+        to = !to;
+//        if ( mDetailCardFragment == null ) {
+//            mDetailCardFragment = Fragment1.newInstance();
+//            getSupportFragmentManager().beginTransaction()
+//                    //.setCustomAnimations( R.anim.anim1, R.anim.anim2 )
+//                    .replace(R.id.fragmentContainer, mDetailCardFragment)
+//                    .setTransition(FragmentTransaction.TRANSIT_NONE)
+//                    .commit();
+//        }
+//        else {
+//            getSupportFragmentManager().beginTransaction().remove( mDetailCardFragment )
+//                    .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_CLOSE)
+//                    .commit();
+//            mDetailCardFragment = null ;
+//        }
     }
 }
