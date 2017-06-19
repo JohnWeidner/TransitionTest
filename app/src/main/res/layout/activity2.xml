@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.motb.transitiontest.Activity2"
+    android:theme="@android:style/Theme.Translucent.NoTitleBar"
+    android:id="@+id/rootView"
+    >
+
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context="com.motb.transitiontest.Activity2"
+        android:layout_marginTop="200dp"
+
+        android:background="@drawable/arc_bg"
+        android:layout_alignParentBottom="true"
+        android:transitionName="rv1"
+        android:id="@+id/arc1"
+        android:backgroundTint="#ff0000ff"
+        android:visibility="invisible"
+        />
+
+    <ImageView
+        android:id="@+id/charlie"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:src="@drawable/charlie"
+        android:transitionName="iv1"
+        android:scaleType="centerCrop"
+        android:stateListAnimator="@null"
+        />
+
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="200dp"
+        android:background="@drawable/arc_bg"
+        android:layout_alignParentBottom="true"
+        android:transitionName="rv2"
+        android:id="@+id/arc2"
+        android:backgroundTint="#ff00ff00"
+        android:visibility="visible"
+        />
+
+
+
+
+
+</RelativeLayout>

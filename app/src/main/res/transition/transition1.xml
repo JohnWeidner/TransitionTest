@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+    <transitionSet xmlns:android="http://schemas.android.com/apk/res/android"
+        android:transitionOrdering="together"
+        android:duration="2000">
+
+
+        <changeBounds
+            android:startDelay="0"
+            android:duration="2000"
+            >
+            <targets>
+                <target android:targetId="@id/charlie"/>
+                <target android:targetId="@id/arc1"/>
+                <target android:targetId="@id/arc2"/>
+            </targets>
+        </changeBounds>
+
+        <fade
+            android:fadingMode="fade_out"
+            android:startDelay="0"
+            android:duration="2000" >
+            <targets>
+                <target android:targetId="@id/arc2"/>
+            </targets>
+        </fade>
+
+    </transitionSet>
